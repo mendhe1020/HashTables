@@ -37,6 +37,41 @@ namespace HashTables
             }
             return linkedlist;
         }
+        public V Get(K key)
+        {
+            int position = GetArrayPosition(key);
+
+            LinkedList<KeyValue<K, V>> linkedList = GetLinkedList(position);
+
+            foreach (KeyValue<K, V> item in linkedList)
+            {
+                if (item.Key.Equals(key))
+                {
+                    return item.Value;
+                }
+            }
+            return default(V);
+        }
+        //UC-3
+        public void Remove(K key)
+        {
+            int position = GetArrayPosition(key);
+            LinkedList<KeyValue<K, V>> linkedList = GetLinkedList(position);
+            bool itemFound = false;
+            KeyValue<K, V> foundItem = default(KeyValue<K, V>);
+            foreach (KeyValue<K, V> item in linkedList)
+            {
+                if (item.Key.Equals(key))
+                {
+                    itemFound = true;
+                    foundItem = item;
+                }
+            }
+            if (itemFound)
+            {
+                linkedList.Remove(foundItem);
+            }
+        }
         public void Display()
         {
             foreach (var linkedList in items)

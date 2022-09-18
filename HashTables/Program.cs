@@ -31,6 +31,15 @@
             }
             Console.WriteLine("Frequency Of The Words");
             hash.Display();
+
+            //UC-3
+            int freq = hash.Get("avoidable");
+            Console.WriteLine("Frequency of The Word avoidable: " + freq);
+            hash.Remove("avoidable");
+            freq = hash.Get("avoidable");
+            Console.WriteLine("Frequency of The Word avoidable After Removing: " + freq);
+            hash.Display();
         }
+
     }
 }
